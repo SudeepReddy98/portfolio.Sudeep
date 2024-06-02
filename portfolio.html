@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    </head>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .top-section {
+            position: relative;
+            text-align: center;
+            padding: 5rem 1rem;
+            background-image: url('https://www.shutterstock.com/image-photo/digital-technology-software-development-concept-600nw-2111828198.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+
+        .top-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            /* Optional: adds a dark overlay for better text contrast */
+        }
+
+        .top-section h1,
+        .top-section p {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .card-container {
+            margin: 15px;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .card-container:hover {
+            transform: scale(1.05);
+        }
+
+        .card-container-heading {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            color: #007bff;
+        }
+
+        .card-container-description {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .button {
+            margin: 20px 0;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .section-heading {
+            font-size: 2rem;
+            margin: 20px 0;
+        }
+
+        .description {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .hidden-section {
+            display: none;
+        }
+    </style>
+
+<body>
+    <style>
+        /* Custom CSS */
+        .navbar {
+            background-color: #101513ad; /* Background color for the navbar */
+        }
+
+        .navbar-image {
+            height: 40px;
+            width: 40px;
+            padding: 5px;
+        }
+
+        .navbar-brand p {
+            display: inline-block;
+            color: #b0c5e3; /* Color for the name */
+            font-size: 1.2em; /* Font size for the name */
+            margin: 0;
+            padding-left: 10px; /* Add padding to separate from the image */
+            vertical-align: middle; /* Align vertically with the image */
+            animation: slideInLeft 1s ease; /* Animation for the name */
+        }
+
+        /* Animation Keyframes for name */
+        @keyframes slideInLeft {
+            0% {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .navbar-toggler-icon {
+            color: #fff; /* Color for the navbar toggler icon */
+        }
+
+         .nav-link {
+            color: #fff; /* Color for the navbar links */
+            animation: slideInRight 1s ease;
+         
+        }
+
+        /* Animation Keyframes for navbar links */
+        @keyframes slideInRight {
+            0% {
+                transform: translateX(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-link:not(:last-child) {
+            margin-right: 20px;
+            
+        }
+        .navbar-nav {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            padding-left: 231px;
+            margin-bottom: 0;
+            list-style: none;
+}
+        
+        .symbol-button {
+            position: absolute;
+            right: 10px; /* Adjust the position of the symbol button */
+            top: 50%;
+            transform: translateY(-50%);
+            animation: fadeIn 1s ease; /* Animation for the symbol button */
+        }
+
+        /* Animation Keyframes for symbol button */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .nav-links {
+            display: none; /* Hide the navigation links by default */
+        }
+
+        .nav-links.show {
+            display: block; /* Show the navigation links when the class 'show' is added */
+        }
+    </style>
+
+<nav class="navbar navbar-expand-lg navbar-light" style="padding-left: 209px">
+    <a class="navbar-brand" href="#" style="padding-bottom: -3.6875rem;">
+        <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/navbar-logo-img.png"
+            class="navbar-image" alt="" />
+        <p>Sudeep Reddy</p>
+    </a>
+    <button class="navbar-toggler" type="button" aria-label="Toggle navigation" onclick="toggleMenu()">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-nav" id="navbarNavAltMarkup"style= "padding-left: 112px;">
+        <a class="nav-link active" href="#" onclick="display('sectionHomepage')">
+            Home <span class="sr-only">(current)</span>
+        </a>
+        
+        <a class="nav-link" href="#" onclick="display('sectionAboutMe')">About Me</a>
+        <a class="nav-link" href="#" onclick="display('sectionSkills')">Skills</a>
+        <a class="nav-link" href="#" onclick="display('sectionServices')">Services</a>
+        <a class="nav-link" href="#" onclick="display('sectionContactform')">Contact Form</a>
+    </div>
+    
+</nav>
+
+<!-- Include jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    function toggleMenu() {
+        $('.navbar-nav').slideToggle(); // Toggle the visibility of the navbar menu
+    }
+</script>
+
+    <!-- Include Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <div id="sectionHomepage">
+        <div class="top-section text-center">
+            <h1 class="mt-4" style="color: antiquewhite;">Hey, Myself Sudeep Reddy</h1>
+                     <p class="mt-4">Crafting exceptional websites and digital experiences is my passion. My skills in HTML, CSS, JavaScript, and other technologies enable me to deliver innovative and creative solutions for every project.</p>
+            <p>Ready to bring your vision to life!</p>
+        </div>
+        <div class="bottom-section d-flex flex-wrap justify-content-center">
+            <div class="card-container col-md-3" onclick="display('sectionHome')">
+                <img src="https://www.springboard.com/blog/wp-content/uploads/2022/06/what-does-a-coder-do-2022-career-guide-1.jpg" class="card-image" alt="Home Image">
+                <h1 class="card-container-heading">Home</h1>
+            </div>
+            <div class="card-container col-md-3" onclick="display('sectionAboutMe')">
+                <img src="https://c7.alamy.com/comp/2JP488B/team-of-programmers-writing-digital-code-in-the-metaverse-and-working-together-on-the-internet-group-of-web-designers-developing-a-cybersecurity-2JP488B.jpg" class="card-image" alt="About Me Image">
+                <h1 class="card-container-heading">About Me</h1>
+            </div>
+            <div class="card-container col-md-3" onclick="display('sectionSkills')">
+                <img src="https://t4.ftcdn.net/jpg/04/95/98/03/240_F_495980372_VVbNwcKJJcLQe18DLD5mSHeWuElmYT3v.jpg" class="card-image" alt="Skills Image">
+                <h1 class="card-container-heading">Skills</h1>
+            </div>
+            <div class="card-container col-md-3" onclick="display('sectionServices')">
+                <img src="https://img.freepik.com/free-photo/standard-quality-control-concept-m_23-2150041859.jpg" class="card-image" alt="Services Image">
+                <h1 class="card-container-heading">Services</h1>
+            </div>
+            <div class="card-container col-md-3" onclick="display('sectionContactform')">
+                <img src="https://cdn.dribbble.com/users/584539/screenshots/3312964/contacto_form.jpg" class="card-image" alt="Contact Form Image">
+                <h1 class="card-container-heading">Contact Form</h1>
+            </div>
+        </div>
+    </div>
+
+    <div id="sectionHome" class="hidden-section">
+        <div class="top-section text-center p-5 bg-light">
+            <h1 class="section-heading">Home</h1>
+        </div>
+        <div class="bottom-section p-4">
+            <p class="description">Hi, I'm Sudeep Reddy, a Frontend Developer.</p>
+            <p class="description">my native place is Kurnool ,Andhra Pradesh</p>
+            <p class="description">studied Intermediate in Narayana Jr. college and SSC in Good Shepherd English School in Kurnool</p>
+            <p class="description">Ever since I wrote my first line of code in high school, I knew I wanted to build things that live on the internet. What started as a hobby has grown into a fulfilling career as a Web Developer.</p>
+            
+            <button class="button" onclick="display('sectionHomepage')">Back</button>
+        </div>
+    </div>
+
+    <div id="sectionAboutMe" class="hidden-section">
+        <div class="top-section text-center p-5 bg-light">
+            <h1 class="section-heading">About Me</h1>
+        </div>
+        <div class="bottom-section p-4 d-flex justify-content-center">
+            <div class="row w-100">
+                <div class="col-md-6 d-flex justify-content-center align-items-center order-2 order-md-1">
+                    <img src="https://i.postimg.cc/mk9T0zDQ/Whats-App-Image-2024-06-01-at-12-13-40-3b39917c.jpg"
+                         class="image w-75 h-auto" />
+                         <style>
+                            .image {
+                                border-radius: 4px;
+                            }
+                         </style>
+                </div>
+                <div class="col-md-6 d-flex flex-column justify-content-center order-1 order-md-2">
+                    <p class="description">Completed my Graduation in 2019 in the stream of Mechanical Engineering.</p>
+                    <p class="description">Combining a keen eye for design with robust coding skills, I deliver aesthetically pleasing and highly functional websites.</p>
+                    <p class="description">I’m passionate about creating intuitive and delightful digital experiences. For me, it's not just about writing clean code or designing pretty interfaces; it’s about solving problems and making life easier for users.</p>
+                    <p class="description">Collaboration, creativity, and continuous learning are at the heart of my work. I believe that the best solutions come from diverse perspectives and relentless curiosity.</p>
+                    <button class="button mt-3" onclick="display('sectionHomepage')">Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="sectionSkills" class="hidden-section">
+        <div class="top-section text-center p-5 bg-light">
+            <h1 class="section-heading">My Skills</h1>
+        </div>
+        <div class="bottom-section p-4">
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 20px;
+                }
+                
+                .skills {
+                    max-width: 600px;
+                    margin: 0 auto;
+                    text-align: justify;
+                }
+        
+                .description {
+                    margin-bottom: 20px;
+                    line-height: 1.6;
+                }
+        
+                h2 {
+                    color: #333;
+                }
+            </style>
+       
+            <div class="skills">
+                
+                <p class="description">My toolkit includes HTML, CSS, JavaScript, along with expertise in Bootstrap, and modern frontend workflows using Webpack and Git.</p>
+                <p class="description">I focus on writing clean, maintainable code and implementing best practices for performance and accessibility. I believe a well-designed frontend is crucial for engaging users and ensuring a seamless digital experience.</p>
+                <p class="description">Feel free to explore my portfolio to see more of my frontend projects, and get in touch if you’d like to collaborate or discuss how I can help bring your vision to life.</p>
+                <h2>Additional Skills</h2>
+                <p class="description">I have instant knowledge in Python and a good amount of experience using several tools.</p>
+            </div>
+            <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        .skill-card img {
+            width: 80%; /* Reduces the image size to 80% */
+            display: block;
+            margin: 0 auto;
+        }
+
+        .skill-card h1 {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 text-center">
+                <div class="two-cards d-flex flex-row justify-content-center">
+                    <div class="HTML-card skill-card mr-5">
+                        <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/portfolio-skills-html-img.png" class="HTML-image" />
+                        <h1 class="HTML-heading">HTML</h1>
+                    </div>
+                    <div class="CSS-card skill-card">
+                        <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/portfolio-skills-css-img.png" class="CSS-image" />
+                        <h1 class="CSS-heading">CSS</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="two-cards mb-3 mt-3 d-flex flex-row justify-content-center">
+                    <div class="Bootstrap-card skill-card w-20 mr-5">
+                        <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/portfolio-skills-bootstrap-img.png" class="Bootstrap-image" />
+                        <h1 class="Bootstrap-heading">Bootstrap</h1>
+                    </div>
+                    <div class="JS-card skill-card">
+                        <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-responsive-website/portfolio-skills-js-img.png" class="JS-image" />
+                        <h1 class="JS-heading">JS</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            <button class="button" onclick="display('sectionHomepage')">Back</button>
+        </div>
+    </div>
+
+    <div id="sectionServices" class="hidden-section">
+        <div class="top-section text-center p-5 bg-light">
+            <h1 class="section-heading">My Services</h1>
+        </div>
+        <div class="bottom-section p-4">
+            <p class="description">I design responsive layouts using CSS Flexbox, Grid, and media queries, ensuring websites look great on all devices.</p>
+            <p class="description">I use CSS preprocessors like Sass for modular and maintainable stylesheets, and methodologies like BEM for scalable and reusable code.</p>
+            <p class="description">I have worked on QA testing role in some AI company where my cleints were shoppers stoppers, flipkart, Zara and etc..</p>
+            <p class="description">I too have some good knowledge upon the networking systems.</p>
+            <button class="button" onclick="display('sectionHomepage')">Back</button>
+        </div>
+    </div>
+
+    <div id="sectionContactform" class="hidden-section">
+        <div class="top-section text-center p-5 bg-light">
+            <h1 class="section-heading">Contact Form</h1>
+        </div>
+        <div class="bottom-section p-4">
+            <form>
+                <div class="form-group">
+                    <label for="name" class="description">Name:</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="phone" class="description">Mobile:</label>
+                    <input type="text" class="form-control" id="phone" placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="email" class="description">Email:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="message" class="description">Message:</label>
+                    <textarea class="form-control" id="message" rows="4" placeholder="Enter your message"></textarea>
+                </div>
+                <button type="submit" class="button">Submit</button>
+                <button type="button" class="button" onclick="display('sectionHomepage')">Back</button>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            margin-top: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .button {
+            margin: 20px 10px 0 0;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+ 
+ <style>
+    /* Style for footer */
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+    }
+
+    /* Style for social icons */
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .social-icons a {
+        display: inline-block;
+        margin: 0 10px;
+        transition: opacity 0.3s ease;
+    }
+
+    .social-icons a img {
+        width: 32px; /* Adjust the size of the icons as needed */
+        height: auto;
+    }
+
+    /* Style for hover effect on social icons */
+    .social-icons a:hover {
+        opacity: 0.7;
+    }
+</style>
+
+<footer>
+    <div class="social-icons">
+        <a href="https://web.whatsapp.com/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/598px-WhatsApp.svg.png" alt="WhatsApp"></a>
+        <a href="https://www.instagram.com/urstrulysudeep?igsh=OGQ5ZDc2ODk2ZA==/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1024px-Instagram_icon.png" alt="Instagram"></a>
+        <a href="mailto:youremail@example.com"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Mail_%28iOS%29.svg/768px-Mail_%28iOS%29.svg.png" alt="Email"></a>
+        <a href="https://www.facebook.com/sudeep.reddy.507464/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/1024px-Facebook_f_logo_%282019%29.svg.png" alt="Facebook"></a>
+    </div>
+    <p>Any queries, Connect with me on social media!</p>
+</footer>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script>
+        function display(section) {
+            document.querySelectorAll('div[id^="section"]').forEach(div => div.style.display = 'none');
+            document.getElementById(section).style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>
